@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio</title>
+
+    <style>
+
+        /* Estilo geral da página */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: white;
+            color: black;
+            transition: 0.3s; /* Suaviza a troca de tema claro/escuro  */
+        }
+
+        /* MENU SUPERIOR */
+        nav {
+            background-color: #333;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Links do menu */
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        /* Efeito ao passar o mouse */
+        nav a:hover {
+            background-color: #555; /* Cinza claro */
+            box-shadow: 0 0 5px rgba(0,0,0,0.4);
+        }
+
+        /* Botão para alternar o tema claro/escuro */
+        #temaBtn {
+            background-color: #777;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin-left: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #temaBtn:hover {
+            background-color: #999;
+        }
+
+        /* Área principal do conteúdo */
+        .container {
+            max-width: 900px; /* Largura máxima */
+            margin: 40px auto; /* Centraliza a div */
+            padding: 20px;
+        }
+
+        /* Títulos */
+        h1 {
+            color: #333;
+        }
+
+        /* Lista de experiências */
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: right;
+            padding: 15px;
+            margin-top: 40px;
+            font-style: italic;
+            font-size: 10px;
+        }
+
+        /* 
+
+            Quando o botao "Tema claro/escuro"  e clickado, adiciona a classe "dark-mode" no body,
+            todas essas regras abaixo entram em ação.
+        */
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+
+        .dark-mode nav {
+            background-color: #000;
+        }
+
+        .dark-mode nav a:hover {
+            background-color: #444;
+        }
+
+        .dark-mode footer {
+            background-color: #000;
+        }
+
+        
+        .dark-mode h1 {
+            color: white;
+        }
+
+        .dark-mode li {
+            color: white;
+        }
+
+        .dark-mode strong {
+            color: white;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU SUPERIOR (igual em todas as páginas) -->
+    <nav>
+        <a href="sobre.html">Sobre mim</a>
+        <a href="formacao.html">Formação</a>
+        <a href="portfolio.html">Portfólio</a>
+        <a href="contato.html">Contato</a>
+
+        <!-- Botão que troca o tema claro/escuro -->
+        <button id="temaBtn">Tema Claro/Escuro</button>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+
+        <h1>Portfólio / Experiência Profissional</h1>
+
+       
+        <ul>
+            <li>
+                <strong>Bioscan</strong> — Suporte Técnico  
+                <br>2001 – 2003
+            </li>
+
+            <li>
+                <strong>Alugatec Corte e Soldas</strong> — Almoxarifado / Manutenção de Máquinas  
+                <br>2003 – 2005
+            </li>
+
+            <li>
+                <strong>TGI Fridays</strong> — Garçom  
+                <br>2005 – 2007
+            </li>
+
+            <li>
+                <strong>Johnny D’s Uptown Café</strong> — Garçom / Escritório  
+                <br>2005 – 2017
+            </li>
+
+            <li>
+                <strong>La Court</strong> — Carpintaria  
+                <br>2017 – Presente
+            </li>
+        </ul>
+
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer>
+        Desenvolvido por Wellington Ferreira
+    </footer>
+
+    <!-- 
+        Botão adicionar/remover a classe "dark-mode" no body.
+    -->
+    <script>
+
+        /* 
+            Quando o botao for clicado, alterna o tema claro/escuro normalmente.
+            Também salva a escolha no navegador usando localStorage.
+        */
+        document.getElementById("temaBtn").addEventListener("click", function() {
+
+            // Alterna a classe dark-mode
+            document.body.classList.toggle("dark-mode");
+
+            // Se o tema escuro estiver ativo, salva "escuro"
+            if (document.body.classList.contains("dark-mode")) {
+                localStorage.setItem("tema", "escuro");
+            } 
+            // Se não estiver, salva "claro"
+            else {
+                localStorage.setItem("tema", "claro");
+            }
+        });
+
+        /*
+            Quando a página carregar, e verificado se existe um tema salvo.
+            Se existir e for "escuro", ele e aplicado automaticamente.
+            Isso faz com que o tema continue igual ao navegar entre páginas.
+        */
+        let temaSalvo = localStorage.getItem("tema");
+
+        if (temaSalvo === "escuro") {
+            document.body.classList.add("dark-mode");
+        }
+
+    </script>
+
+</body>
+</html>
